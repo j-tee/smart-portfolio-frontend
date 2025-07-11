@@ -1,42 +1,42 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import type { AboutMe } from '../../types/portfolio';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios'
+import type { AboutMe } from '../../types/portfolio'
 
 interface AboutMeState {
-  data: AboutMe | null;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | null;
+  data: AboutMe | null
+  status: 'idle' | 'loading' | 'succeeded' | 'failed'
+  error: string | null
 }
 
 const initialState: AboutMeState = {
   data: null,
   status: 'idle',
   error: null,
-};
+}
 
 export const fetchAboutMe = createAsyncThunk('aboutMe/fetch', async () => {
-  const response = await axios.get<AboutMe>('/api/portfolio/aboutme/');
-  return response.data;
-});
+  const response = await axios.get<AboutMe>('/api/portfolio/aboutme/')
+  return response.data
+})
 
 const aboutMeSlice = createSlice({
   name: 'aboutMe',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchAboutMe.pending, (state) => {
-        state.status = 'loading';
+      .addCase(fetchAboutMe.pending, state => {
+        state.status = 'loading'
       })
       .addCase(fetchAboutMe.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.data = action.payload;
+        state.status = 'succeeded'
+        state.data = action.payload
       })
       .addCase(fetchAboutMe.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Something went wrong';
-      });
+        state.status = 'failed'
+        state.error = action.error.message || 'Something went wrong'
+      })
   },
-});
+})
 
-export default aboutMeSlice.reducer;
+export default aboutMeSlice.reducer
