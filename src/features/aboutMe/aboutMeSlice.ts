@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { getAboutMe } from '@/services/aboutMeService'
 import type { AboutMe } from '../../types/portfolio'
 
 interface AboutMeState {
@@ -15,8 +15,8 @@ const initialState: AboutMeState = {
 }
 
 export const fetchAboutMe = createAsyncThunk('aboutMe/fetch', async () => {
-  const response = await axios.get<AboutMe>('/api/portfolio/aboutme/')
-  return response.data
+  const response = await getAboutMe()
+  return response
 })
 
 const aboutMeSlice = createSlice({

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { getProjects } from '@/services/projectService'
 import type { Project } from '../../types/portfolio'
 import type { RootState } from '../../app/store'
 
@@ -17,8 +17,8 @@ const initialState: ProjectState = {
 
 // Thunk for fetching project list
 export const fetchProjects = createAsyncThunk('projects/fetch', async () => {
-  const response = await axios.get<Project[]>('/api/portfolio/projects/')
-  return response.data
+  const response = getProjects()
+  return response
 })
 
 const projectSlice = createSlice({

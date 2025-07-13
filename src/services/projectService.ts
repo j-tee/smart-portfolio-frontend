@@ -1,11 +1,11 @@
 import api from './api'
 
-export const fetchProjects = async () => {
+export const getProjects = async () => {
   const response = await api.get('/api/portfolio/projects/')
   return response.data
 }
 
-export const fetchProjectById = async (id: number) => {
+export const getProjectById = async (id: number) => {
   const response = await api.get(`/api/portfolio/projects/${id}/`)
   return response.data
 }
