@@ -11,7 +11,7 @@ const WorkExperience = () => {
   if (workExperiences.display) {
     return (
       <div id="experience">
-        <Fade bottom duration={1000} distance="20px">
+        <Fade direction="up" duration={1000}>
           <div className="experience-container" id="workExperience">
             <div>
               <h1 className="experience-heading">Experiences</h1>
@@ -19,6 +19,7 @@ const WorkExperience = () => {
                 {workExperiences.experience.map((card, i) => {
                   return (
                     <ExperienceCard
+                      // eslint-disable-next-line react/no-array-index-key
                       key={i}
                       isDark={isDark}
                       cardInfo={{

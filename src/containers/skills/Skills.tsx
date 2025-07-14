@@ -7,6 +7,7 @@ import codingPerson from '../../assets/lottie/codingPerson.json'
 import DisplayLottie from '../../components/displayLottie/DisplayLottie'
 import StyleContext from '../../contexts/StyleContext'
 import type { StyleContextType } from '../../contexts/StyleContext'
+import developerActivity from '../../assets/images/developerActivity.svg'
 
 const Skills = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType
@@ -21,7 +22,7 @@ const Skills = () => {
             {illustration.animated ? (
               <DisplayLottie animationData={codingPerson} />
             ) : (
-              <img alt="Man Working" src={require('../../assets/images/developerActivity.svg')} />
+              <img alt="Man Working" src={developerActivity} />
             )}
           </div>
         </Fade>
@@ -42,6 +43,7 @@ const Skills = () => {
               {skillsSection.skills.map((skills, i) => {
                 return (
                   <p
+                    // eslint-disable-next-line react/no-array-index-key
                     key={i}
                     className={isDark ? 'dark-mode subTitle skills-text' : 'subTitle skills-text'}
                   >

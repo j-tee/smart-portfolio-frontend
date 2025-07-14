@@ -8,11 +8,12 @@ import email from '../../assets/lottie/email.json'
 import DisplayLottie from '../../components/displayLottie/DisplayLottie'
 import StyleContext from '../../contexts/StyleContext'
 import type { StyleContextType } from '../../contexts/StyleContext'
+import contactMailDark from '../../assets/images/contactMailDark.svg'
 
 const Contact = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType
   return (
-    <Fade bottom duration={1000} distance="20px">
+    <Fade direction="up" duration={1000}>
       <div className="main contact-margin-top" id="contact">
         <div className="contact-div-main">
           <div className="contact-header">
@@ -42,7 +43,7 @@ const Contact = () => {
             {illustration.animated ? (
               <DisplayLottie animationData={email} />
             ) : (
-              <img alt="Man working" src={require('../../assets/images/contactMailDark.svg')} />
+              <img alt="Man working" src={contactMailDark} />
             )}
           </div>
         </div>

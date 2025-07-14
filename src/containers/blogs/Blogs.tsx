@@ -16,9 +16,6 @@ const Blogs = () => {
   }
   const [mediumBlogs, setMediumBlogs] = useState<MediumBlog[] | 'Error'>([])
 
-  const setMediumBlogsFunction = (array: MediumBlog[] | 'Error') => {
-    setMediumBlogs(array)
-  }
   // Medium API returns blogs' content in HTML format. Below function extracts blogs' text content within paragraph tags
   type ExtractTextContent = (html: unknown) => string
 
@@ -33,6 +30,9 @@ const Blogs = () => {
       : ''
   }
   useEffect(() => {
+    const setMediumBlogsFunction = (array: MediumBlog[] | 'Error') => {
+      setMediumBlogs(array)
+    }
     if (blogSection.displayMediumBlogs === 'true') {
       const getProfileData = () => {
         fetch('/blogs.json')
@@ -40,11 +40,12 @@ const Blogs = () => {
             if (result.ok) {
               return result.json()
             }
+            throw new Error('Failed to fetch blogs')
           })
           .then(response => {
             setMediumBlogsFunction(response.items)
           })
-          .catch(function (error) {
+          .catch(error => {
             // eslint-disable-next-line no-console
             console.error(
               `${error} (because of this error Blogs section could not be displayed. Blogs section has reverted to default)`

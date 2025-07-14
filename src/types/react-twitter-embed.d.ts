@@ -7,7 +7,7 @@ declare module 'react-twitter-embed' {
     screenName?: string
     options?: object
     onLoad?: () => void
-    [key: string]: any
+    [key: string]: umknown
   }
 
   export const TwitterTimelineEmbed: React.FC<TwitterTimelineEmbedProps>

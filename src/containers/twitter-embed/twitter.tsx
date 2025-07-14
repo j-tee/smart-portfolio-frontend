@@ -11,7 +11,7 @@ const cantDisplayError =
   "<div className='centerContent'><h2>Can't load? Check privacy protection settings</h2></div>"
 
 function timeOut() {
-  setTimeout(function () {
+  setTimeout(() => {
     const twitterElement = document.getElementById('twitter')
     if (twitterElement && !twitterElement.innerHTML.includes('iframe')) {
       twitterElement.innerHTML = cantDisplayError
@@ -27,6 +27,7 @@ const Twitter = () => {
     return null
   }
   if (!twitterDetails.userName) {
+    // eslint-disable-next-line no-console
     console.error('Twitter username for twitter section is missing')
   }
   if (twitterDetails.userName) {

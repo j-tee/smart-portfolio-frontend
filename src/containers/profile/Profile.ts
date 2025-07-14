@@ -6,7 +6,9 @@ import Loading from '../loading/Loading'
 function renderLoader() {
   return React.createElement(Loading)
 }
+
 const GithubProfileCard = lazy(() => import('../../components/githubProfileCard/GithubProfileCard'))
+
 const Profile = () => {
   interface GithubProfile {
     id: number
@@ -14,15 +16,16 @@ const Profile = () => {
     location: string
     avatarUrl: string
     name: string
-    [key: string]: any
+    [key: string]: unknown
   }
+
   const [prof, setrepo] = useState<GithubProfile | string>()
 
-  function setProfileFunction(array: GithubProfile | string) {
-    setrepo(array)
-  }
-
   useEffect(() => {
+    const setProfileFunction = (array: GithubProfile | string) => {
+      setrepo(array)
+    }
+
     if (openSource.showGithubProfile === 'true') {
       const getProfileData = () => {
         fetch('/profile.json')
@@ -30,11 +33,13 @@ const Profile = () => {
             if (result.ok) {
               return result.json()
             }
+            throw new Error('Failed to fetch GitHub profile')
           })
           .then(response => {
             setProfileFunction(response.data.user)
           })
-          .catch(function (error) {
+          .catch(error => {
+            // eslint-disable-next-line no-console
             console.error(
               `${error} (because of this error GitHub contact section could not be displayed. Contact section has reverted to default)`
             )
@@ -45,6 +50,7 @@ const Profile = () => {
       getProfileData()
     }
   }, [])
+
   if (
     openSource.display &&
     openSource.showGithubProfile === 'true' &&
@@ -59,6 +65,8 @@ const Profile = () => {
       })
     )
   }
+
   return React.createElement(Contact)
 }
+
 export default Profile

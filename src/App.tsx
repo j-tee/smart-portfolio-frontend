@@ -18,7 +18,7 @@ import Twitter from './containers/twitter-embed/twitter'
 import Podcast from './containers/podcast/Podcast'
 import Profile from './containers/profile/Profile'
 import Footer from './components/footer/Footer'
-import { useLocalStorage } from './hooks/useLocalStorage'
+import useLocalStorage from './hooks/useLocalStorage'
 import ScrollToTopButton from './containers/topbutton/Top'
 import './App.scss'
 

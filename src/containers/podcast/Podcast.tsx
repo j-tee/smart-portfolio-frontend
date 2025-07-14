@@ -8,13 +8,16 @@ import type { StyleContextType } from '../../contexts/StyleContext'
 const Podcast = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType
 
-  if (!podcastSection) console.error('podcastSection object for Podcast section is missing')
+  if (!podcastSection) {
+    // eslint-disable-next-line no-console
+    console.error('podcastSection object for Podcast section is missing')
+  }
 
   if (!podcastSection.display) {
     return null
   }
   return (
-    <Fade bottom duration={1000} distance="20px">
+    <Fade direction="up" duration={1000}>
       <div className="main">
         <div className="podcast-header">
           <h1 className="podcast-header-title">{podcastSection.title}</h1>
@@ -29,9 +32,11 @@ const Podcast = () => {
         <div className="podcast-main-div">
           {podcastSection.podcast.map((podcastLink, i) => {
             if (!podcastLink) {
+              // eslint-disable-next-line no-console
               console.log(`Podcast link for ${podcastSection.title} is missing`)
             }
             return (
+              // eslint-disable-next-line react/no-array-index-key
               <div key={i}>
                 <iframe
                   className="podcast"

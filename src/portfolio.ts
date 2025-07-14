@@ -350,6 +350,7 @@ const talkSection = {
       subtitle: 'Codelab at GDG DevFest Karachi 2019',
       slides_url: 'https://bit.ly/saadpasta-slides',
       event_url: 'https://www.facebook.com/events/2339906106275053/',
+      image: 'https://i.imgur.com/3k0b1aH.png', // Replace with your talk image URL
       // image: gdgDevFestLogo,
     },
   ],

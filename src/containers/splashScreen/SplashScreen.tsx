@@ -5,7 +5,7 @@ import { greeting, splashScreen } from '../../portfolio'
 import StyleContext from '../../contexts/StyleContext'
 import type { StyleContextType } from '../../contexts/StyleContext'
 
-export default function SplashScreen() {
+const SplashScreen = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType
   return (
     <div className={isDark ? 'dark-mode splash-container' : 'splash-container'}>
@@ -20,3 +20,4 @@ export default function SplashScreen() {
     </div>
   )
 }
+export default SplashScreen

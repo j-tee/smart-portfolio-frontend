@@ -12,7 +12,7 @@ const Talks = () => {
     return null
   }
   return (
-    <Fade bottom duration={1000} distance="20px">
+    <Fade direction="up" duration={1000}>
       <div className="main" id="talks">
         <div className="talk-header">
           <h1 className="talk-header-title">{talkSection.title}</h1>
@@ -24,6 +24,7 @@ const Talks = () => {
           {talkSection.talks.map((talk, i) => {
             return (
               <TalkCard
+                // eslint-disable-next-line react/no-array-index-key
                 key={i}
                 talkDetails={{
                   title: talk.title,

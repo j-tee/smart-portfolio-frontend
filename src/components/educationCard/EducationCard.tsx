@@ -1,8 +1,8 @@
 import { createRef, useContext } from 'react'
 import './EducationCard.scss'
+import { Fade, Slide } from 'react-awesome-reveal'
 import StyleContext from '../../contexts/StyleContext'
 import type { StyleContextType } from '../../contexts/StyleContext'
-import { Fade, Slide } from 'react-awesome-reveal'
 
 interface School {
   logo?: string
@@ -27,7 +27,6 @@ const EducationCard = ({ school }: { school: School }) => {
       : null
   }
   // eslint-disable-next-line no-console
-  // console.log(school.logo, school.schoolName, 'in education section')
   if (!school.logo) console.error(`Image of ${school.name} is missing in education section`)
   return (
     <div>
