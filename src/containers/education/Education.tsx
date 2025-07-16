@@ -1,6 +1,6 @@
 import './Education.scss'
-import EducationCard from '../../components/educationCard/EducationCard'
-import { educationInfo } from '../../portfolio'
+import EducationCard from '@/components/educationCard/EducationCard'
+import { educationInfo } from '@/portfolio'
 
 const Education = () => {
   if (educationInfo.display) {

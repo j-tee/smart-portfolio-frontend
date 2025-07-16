@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import './WorkExperience.scss'
 import { Fade } from 'react-awesome-reveal'
-import ExperienceCard from '../../components/experienceCard/ExperienceCard'
-import { workExperiences } from '../../portfolio'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import ExperienceCard from '@/components/experienceCard/ExperienceCard'
+import { workExperiences } from '@/portfolio'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 
 const WorkExperience = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType

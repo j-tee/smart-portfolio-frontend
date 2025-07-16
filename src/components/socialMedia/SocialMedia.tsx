@@ -1,5 +1,5 @@
 import './SocialMedia.scss'
-import { socialMediaLinks } from '../../portfolio'
+import { socialMediaLinks } from '@/portfolio'
 
 const socialMedia = () => {
   if (!socialMediaLinks.display) {

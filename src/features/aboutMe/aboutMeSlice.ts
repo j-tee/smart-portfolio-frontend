@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getAboutMe } from '@/services/aboutMeService'
-import type { AboutMe } from '../../types/portfolio'
+import type { AboutMe } from '@/types/portfolio'
 
 interface AboutMeState {
   data: AboutMe | null

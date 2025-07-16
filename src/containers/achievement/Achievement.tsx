@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import './Achievement.scss'
 import { Fade } from 'react-awesome-reveal'
-import AchievementCard from '../../components/achievementCard/AchievementCard'
-import { achievementSection } from '../../portfolio'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import AchievementCard from '@/components/achievementCard/AchievementCard'
+import { achievementSection } from '@/portfolio'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 
 const Achievement = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType

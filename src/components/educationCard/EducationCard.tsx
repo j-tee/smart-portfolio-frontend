@@ -1,8 +1,8 @@
 import { createRef, useContext } from 'react'
 import './EducationCard.scss'
 import { Fade, Slide } from 'react-awesome-reveal'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 
 interface School {
   logo?: string

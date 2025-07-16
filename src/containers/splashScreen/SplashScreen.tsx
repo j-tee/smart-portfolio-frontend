@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import './SplashScreen.css'
-import DisplayLottie from '../../components/displayLottie/DisplayLottie'
-import { greeting, splashScreen } from '../../portfolio'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import DisplayLottie from '@/components/displayLottie/DisplayLottie'
+import { greeting, splashScreen } from '@/portfolio'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 
 const SplashScreen = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType

@@ -1,6 +1,6 @@
 import './GithubRepoCard.scss'
 import { Fade } from 'react-awesome-reveal'
-import { formatFileSizeDisplay } from '../../utils'
+import { formatFileSizeDisplay } from '@/utils'
 
 interface GithubRepoCardProps {
   repo: {

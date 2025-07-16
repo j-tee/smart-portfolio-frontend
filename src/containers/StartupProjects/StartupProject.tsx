@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import './StartupProjects.scss'
 import { Fade } from 'react-awesome-reveal'
-import { bigProjects } from '../../portfolio'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import { bigProjects } from '@/portfolio'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 
 const StartupProject = () => {
   function openUrlInNewTab(url: string): void {
@@ -19,7 +19,7 @@ const StartupProject = () => {
     return null
   }
   return (
-    <Fade bottom duration={1000} distance="20px">
+    <Fade duration={1000}>
       <div className="main" id="projects">
         <div>
           <h1 className="skills-heading">{bigProjects.title}</h1>

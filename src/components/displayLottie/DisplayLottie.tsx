@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import Lottie from 'lottie-react'
-import Loading from '../../containers/loading/Loading'
+import Loading from '@/containers/loading/Loading'
 
 interface DisplayLottieProps {
   animationData: object

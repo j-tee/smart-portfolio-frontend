@@ -1,14 +1,14 @@
 import { useContext } from 'react'
 import './Contact.scss'
 import { Fade } from 'react-awesome-reveal'
-import SocialMedia from '../../components/socialMedia/SocialMedia'
-import { illustration, contactInfo } from '../../portfolio'
+import SocialMedia from '@/components/socialMedia/SocialMedia'
+import { illustration, contactInfo } from '@/portfolio'
 // Update the import to use the correct file extension, e.g., .json
-import email from '../../assets/lottie/email.json'
-import DisplayLottie from '../../components/displayLottie/DisplayLottie'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
-import contactMailDark from '../../assets/images/contactMailDark.svg'
+import email from '@/assets/lottie/email.json'
+import DisplayLottie from '@/components/displayLottie/DisplayLottie'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
+import contactMailDark from '@/assets/images/contactMailDark.svg'
 
 const Contact = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType

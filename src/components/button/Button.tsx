@@ -10,7 +10,9 @@ interface ButtonProps {
   text: string
   href?: string
   download?: string
-  // className?: string
+  /* eslint-disable react/no-unused-prop-types */
+  className?: string
+  newTab?: boolean
   // newTab?: boolean
   // onClick?: () => void
   // id?: string

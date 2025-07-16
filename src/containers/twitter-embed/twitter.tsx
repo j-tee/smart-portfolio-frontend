@@ -1,10 +1,10 @@
 import { Suspense, useContext } from 'react'
 import './twitter.scss'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
+import { twitterDetails } from '@/portfolio'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 import Loading from '../loading/Loading'
-import { twitterDetails } from '../../portfolio'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
 
 const renderLoader = () => <Loading />
 const cantDisplayError =

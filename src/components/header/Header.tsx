@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import Headroom from 'react-headroom'
 import './Header.scss'
-import ToggleSwitch from '../ToggleSwitch/ToggleSwitch'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import ToggleSwitch from '@/components/ToggleSwitch/ToggleSwitch'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 import {
   greeting,
   workExperiences,
@@ -13,7 +13,7 @@ import {
   talkSection,
   achievementSection,
   resumeSection,
-} from '../../portfolio'
+} from '@/portfolio'
 
 const Header = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType

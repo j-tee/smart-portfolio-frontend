@@ -1,8 +1,8 @@
 import './GithubProfileCard.scss'
 import emoji from 'react-easy-emoji'
 import { Fade } from 'react-awesome-reveal'
+import { contactInfo, isHireable } from '@/portfolio'
 import SocialMedia from '../socialMedia/SocialMedia'
-import { contactInfo, isHireable } from '../../portfolio'
 
 interface GithubProfile {
   bio: string

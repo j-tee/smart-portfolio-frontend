@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getProjects } from '@/services/projectService'
-import type { Project } from '../../types/portfolio'
-import type { RootState } from '../../app/store'
+import type { Project } from '@/types/portfolio'
+import type { RootState } from '@/app/store'
 
 interface ProjectState {
   data: Project[]

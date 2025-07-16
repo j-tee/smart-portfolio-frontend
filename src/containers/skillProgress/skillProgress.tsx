@@ -1,9 +1,9 @@
 import './Progress.scss'
 import { Fade } from 'react-awesome-reveal'
-import { illustration, techStack } from '../../portfolio'
-import Build from '../../assets/lottie/build.json'
-import DisplayLottie from '../../components/displayLottie/DisplayLottie'
-import skill from '../../assets/images/skill.svg'
+import { illustration, techStack } from '@/portfolio'
+import Build from '@/assets/lottie/build.json'
+import DisplayLottie from '@/components/displayLottie/DisplayLottie'
+import skill from '@/assets/images/skill.svg'
 
 const StackProgress = () => {
   if (techStack.viewSkillBars) {

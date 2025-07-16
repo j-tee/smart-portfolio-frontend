@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext, Suspense, lazy } from 'react'
 import './Project.scss'
-import Button from '../../components/button/Button'
-import { openSource, socialMediaLinks } from '../../portfolio'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import Button from '@/components/button/Button'
+import { openSource, socialMediaLinks } from '@/portfolio'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 import Loading from '../loading/Loading'
 
 interface RepoNode {
@@ -29,7 +29,7 @@ interface RepoNode {
 type RepoArray = RepoNode[]
 
 const Projects = () => {
-  const GithubRepoCard = lazy(() => import('../../components/githubRepoCard/GithubRepoCard'))
+  const GithubRepoCard = lazy(() => import('@/components/githubRepoCard/GithubRepoCard'))
   const FailedLoading = () => null
   const renderLoader = () => <Loading />
   const [repo, setrepo] = useState<RepoArray | string>([])

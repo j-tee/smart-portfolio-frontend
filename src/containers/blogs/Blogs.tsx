@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from 'react'
 import './Blog.scss'
 import { Fade } from 'react-awesome-reveal'
-import BlogCard from '../../components/blogCard/BlogCard'
-import { blogSection } from '../../portfolio'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import BlogCard from '@/components/blogCard/BlogCard'
+import { blogSection } from '@/portfolio'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 
 const Blogs = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType

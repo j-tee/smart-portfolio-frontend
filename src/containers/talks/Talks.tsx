@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import './Talks.scss'
 import { Fade } from 'react-awesome-reveal'
-import TalkCard from '../../components/talkCard/TalkCard'
-import { talkSection } from '../../portfolio'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
+import TalkCard from '@/components/talkCard/TalkCard'
+import { talkSection } from '@/portfolio'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
 
 const Talks = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType

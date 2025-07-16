@@ -1,5 +1,5 @@
 import './SoftwareSkill.scss'
-import { skillsSection } from '../../portfolio'
+import { skillsSection } from '@/portfolio'
 
 const SoftwareSkill = () => {
   return (

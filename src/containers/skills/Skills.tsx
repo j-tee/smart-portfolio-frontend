@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 import './Skills.scss'
 import { Fade } from 'react-awesome-reveal'
-import SoftwareSkill from '../../components/softwareSkills/SoftwareSkill'
-import { illustration, skillsSection } from '../../portfolio'
-import codingPerson from '../../assets/lottie/codingPerson.json'
-import DisplayLottie from '../../components/displayLottie/DisplayLottie'
-import StyleContext from '../../contexts/StyleContext'
-import type { StyleContextType } from '../../contexts/StyleContext'
-import developerActivity from '../../assets/images/developerActivity.svg'
+import SoftwareSkill from '@/components/softwareSkills/SoftwareSkill'
+import { illustration, skillsSection } from '@/portfolio'
+import codingPerson from '@/assets/lottie/codingPerson.json'
+import DisplayLottie from '@/components/displayLottie/DisplayLottie'
+import StyleContext from '@/contexts/StyleContext'
+import type { StyleContextType } from '@/contexts/StyleContext'
+import developerActivity from '@/assets/images/developerActivity.svg'
 
 const Skills = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType

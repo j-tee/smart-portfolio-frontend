@@ -3,9 +3,9 @@
 import { useEffect } from 'react'
 import useAppDispatch from '@/app/hooks/useAppDispatch'
 import useAppSelector from '@/app/hooks/useAppSelector'
+import type { RootState } from '@/app/store'
 import { fetchAboutMe } from './aboutMeSlice'
 // Import RootState from your app's store, adjust the path as needed
-import type { RootState } from '../../app/store'
 
 const AboutMeSection = () => {
   const dispatch = useAppDispatch()

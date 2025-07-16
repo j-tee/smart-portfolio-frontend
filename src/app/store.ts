@@ -1,7 +1,7 @@
 // app/store.ts
 import { configureStore } from '@reduxjs/toolkit'
-import aboutReducer from '../features/aboutMe/aboutMeSlice'
-import projectReducer from '../features/projects/projectSlice'
+import aboutReducer from '@/features/aboutMe/aboutMeSlice'
+import projectReducer from '@/features/projects/projectSlice'
 
 export const store = configureStore({
   reducer: {

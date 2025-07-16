@@ -3,19 +3,19 @@
 // To change portfolio colors globally go to the  _globalColor.scss file
 
 import emoji from 'react-easy-emoji'
-import splashAnimation from './assets/lottie/splashAnimation.json' // Rename to your file name for custom animation
+import splashAnimation from '@/assets/lottie/splashAnimation.json' // Rename to your file name for custom animation
 
-import harvardLogo from './assets/images/harvardLogo.png'
-import stanfordLogo from './assets/images/stanfordLogo.png'
-// import gdgDevFestLogo from './assets/images/gdgDevFestLogo.png'
-import facebookLogo from './assets/images/facebookLogo.png'
-import quoraLogo from './assets/images/quoraLogo.png'
-import airbnbLogo from './assets/images/airbnbLogo.png'
-import saayaHealthLogo from './assets/images/saayaHealthLogo.webp' // Uncomment if you have this image
-import nextuLogo from './assets/images/nextuLogo.webp' // Uncomment if you have this image
-import pwaLogo from './assets/images/pwaLogo.webp' // Uncomment if you have this image
-import codeInLogo from './assets/images/codeInLogo.webp' // Uncomment if you have this image
-import googleAssistantLogo from './assets/images/googleAssistantLogo.webp' // Uncomment if you have this image
+import harvardLogo from '@/assets/images/harvardLogo.png'
+import stanfordLogo from '@/assets/images/stanfordLogo.png'
+// import gdgDevFestLogo from '@/assets/images/gdgDevFestLogo.png'
+import facebookLogo from '@/assets/images/facebookLogo.png'
+import quoraLogo from '@/assets/images/quoraLogo.png'
+import airbnbLogo from '@/assets/images/airbnbLogo.png'
+import saayaHealthLogo from '@/assets/images/saayaHealthLogo.webp' // Uncomment if you have this image
+import nextuLogo from '@/assets/images/nextuLogo.webp' // Uncomment if you have this image
+import pwaLogo from '@/assets/images/pwaLogo.webp' // Uncomment if you have this image
+import codeInLogo from '@/assets/images/codeInLogo.webp' // Uncomment if you have this image
+import googleAssistantLogo from '@/assets/images/googleAssistantLogo.webp' // Uncomment if you have this image
 
 // Splash Screen
 
@@ -32,7 +32,7 @@ const illustration = {
 }
 
 const greeting = {
-  username: 'Saad Pasta',
+  username: 'TeeJay',
   title: "Hi all, I'm Saad",
   subTitle: emoji(
     'A passionate Full Stack Software Developer 🚀 having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks.'
