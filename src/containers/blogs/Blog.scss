@@ -1,5 +1,5 @@
 /*Blog Cards Layout*/
-@import '@/styles/_globalColor';
+@use '@/styles/globalColor' as *;
 
 .square {
   width: 440px;

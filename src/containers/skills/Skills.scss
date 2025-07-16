@@ -1,4 +1,4 @@
-@import '@/styles/_globalColor';
+@use '@/styles/globalColor' as *;
 
 .skills-main-div {
   display: flex;

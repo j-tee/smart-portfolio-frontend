@@ -1,4 +1,4 @@
-@import '@/styles/_globalColor';
+@use '@/styles/globalColor' as *;
 
 .achievement-heading {
   font-size: 56px;

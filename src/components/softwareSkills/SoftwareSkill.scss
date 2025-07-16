@@ -1,4 +1,4 @@
-@import '@/styles/_globalColor';
+@use '@/styles/globalColor' as *;
 
 .dev-icons {
   padding-left: 0;

@@ -1,4 +1,4 @@
-@import '@/styles/_globalColor';
+@use '@/styles/globalColor' as *;
 
 .social-media-div {
   font-size: 2em;
