@@ -1,4 +1,5 @@
 import type { KeyboardEvent } from 'react'
+import './AchievementCard.scss'
 
 interface AchievementCardFooter {
   name: string

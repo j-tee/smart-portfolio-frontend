@@ -1,5 +1,18 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './SocialMedia.scss'
 import { socialMediaLinks } from '@/portfolio'
+import {
+  faFacebook,
+  faGithub,
+  faGitlab,
+  faInstagram,
+  faKaggle,
+  faLinkedin,
+  faMedium,
+  faStackOverflow,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 const socialMedia = () => {
   if (!socialMediaLinks.display) {
@@ -15,7 +28,8 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="GitHub Profile"
         >
-          <i className="fab fa-github" />
+          {/* <i className="fab fa-github" /> */}
+          <FontAwesomeIcon icon={faGithub} size="1x" />
           <span />
         </a>
       ) : null}
@@ -28,7 +42,8 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="LinkedIn Profile"
         >
-          <i className="fab fa-linkedin-in" />
+          {/* <i className="fab fa-linkedin-in" /> */}
+          <FontAwesomeIcon icon={faLinkedin} size="1x" />
           <span />
         </a>
       ) : null}
@@ -41,7 +56,8 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="Email"
         >
-          <i className="fas fa-envelope" />
+          {/* <i className="fas fa-envelope" /> */}
+          <FontAwesomeIcon icon={faEnvelope} size="1x" />
           <span />
         </a>
       ) : null}
@@ -54,7 +70,8 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="GitLab Profile"
         >
-          <i className="fab fa-gitlab" />
+          {/* <i className="fab fa-gitlab" /> */}
+          <FontAwesomeIcon icon={faGitlab} size="1x" />
           <span />
         </a>
       ) : null}
@@ -67,7 +84,8 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="Facebook Profile"
         >
-          <i className="fab fa-facebook-f" />
+          {/* <i className="fab fa-facebook-f" /> */}
+          <FontAwesomeIcon icon={faFacebook} size="1x" />
           <span />
         </a>
       ) : null}
@@ -80,7 +98,8 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="Instagram Profile"
         >
-          <i className="fab fa-instagram" />
+          {/* <i className="fab fa-instagram" /> */}
+          <FontAwesomeIcon icon={faInstagram} size="1x" />
           <span />
         </a>
       ) : null}
@@ -93,7 +112,7 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="Twitter Profile"
         >
-          <i className="fab fa-twitter" />
+          <FontAwesomeIcon icon={faTwitter} size="1x" />
           <span />
         </a>
       ) : null}
@@ -106,7 +125,8 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="Medium Profile"
         >
-          <i className="fab fa-medium" />
+          {/* <i className="fab fa-medium" /> */}
+          <FontAwesomeIcon icon={faMedium} size="1x" />
           <span />
         </a>
       ) : null}
@@ -119,7 +139,7 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="Stack Overflow Profile"
         >
-          <i className="fab fa-stack-overflow" />
+          <FontAwesomeIcon icon={faStackOverflow} size="1x" />
           <span />
         </a>
       ) : null}
@@ -132,7 +152,7 @@ const socialMedia = () => {
           rel="noopener noreferrer"
           aria-label="Kaggle Profile"
         >
-          <i className="fab fa-kaggle" />
+          <FontAwesomeIcon icon={faKaggle} size="1x" />
           <span />
         </a>
       ) : null}

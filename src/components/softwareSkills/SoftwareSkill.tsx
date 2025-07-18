@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './SoftwareSkill.scss'
 import { skillsSection } from '@/portfolio'
 
@@ -8,7 +9,7 @@ const SoftwareSkill = () => {
         <ul className="dev-icons">
           {skillsSection.softwareSkills.map(skills => (
             <li key={skills.skillName} className="software-skill-inline">
-              <i className={skills.fontAwesomeClassname} />
+              <FontAwesomeIcon icon={skills.icon} size="1x" />
               <p>{skills.skillName}</p>
             </li>
           ))}

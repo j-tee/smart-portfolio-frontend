@@ -1,5 +1,6 @@
 import ColorThief from 'colorthief'
 import { createRef, useState } from 'react'
+import './ExperienceCard.scss'
 
 interface RGBValues extends Array<number> {
   0: number

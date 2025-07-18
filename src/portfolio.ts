@@ -16,6 +16,20 @@ import nextuLogo from '@/assets/images/nextuLogo.webp' // Uncomment if you have 
 import pwaLogo from '@/assets/images/pwaLogo.webp' // Uncomment if you have this image
 import codeInLogo from '@/assets/images/codeInLogo.webp' // Uncomment if you have this image
 import googleAssistantLogo from '@/assets/images/googleAssistantLogo.webp' // Uncomment if you have this image
+import {
+  faAws,
+  faCss3Alt,
+  faDocker,
+  faHtml5,
+  faJs,
+  faNode,
+  faNpm,
+  faPython,
+  faReact,
+  faSass,
+  faSwift,
+} from '@fortawesome/free-brands-svg-icons'
+import { faDatabase, faFire } from '@fortawesome/free-solid-svg-icons'
 
 // Splash Screen
 
@@ -33,7 +47,7 @@ const illustration = {
 
 const greeting = {
   username: 'TeeJay',
-  title: "Hi all, I'm Saad",
+  title: "Hi all, I'm TeeJay  ",
   subTitle: emoji(
     'A passionate Full Stack Software Developer 🚀 having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks.'
   ),
@@ -71,63 +85,20 @@ const skillsSection = {
     emoji('⚡ Progressive Web Applications ( PWA ) in normal and SPA Stacks'),
     emoji('⚡ Integration of third party services such as Firebase/ AWS / Digital Ocean'),
   ],
-
-  /* Make Sure to include correct Font Awesome Classname to view your icon
-https://fontawesome.com/icons?d=gallery */
-
   softwareSkills: [
-    {
-      skillName: 'html-5',
-      fontAwesomeClassname: 'fab fa-html5',
-    },
-    {
-      skillName: 'css3',
-      fontAwesomeClassname: 'fab fa-css3-alt',
-    },
-    {
-      skillName: 'sass',
-      fontAwesomeClassname: 'fab fa-sass',
-    },
-    {
-      skillName: 'JavaScript',
-      fontAwesomeClassname: 'fab fa-js',
-    },
-    {
-      skillName: 'reactjs',
-      fontAwesomeClassname: 'fab fa-react',
-    },
-    {
-      skillName: 'nodejs',
-      fontAwesomeClassname: 'fab fa-node',
-    },
-    {
-      skillName: 'swift',
-      fontAwesomeClassname: 'fab fa-swift',
-    },
-    {
-      skillName: 'npm',
-      fontAwesomeClassname: 'fab fa-npm',
-    },
-    {
-      skillName: 'sql-database',
-      fontAwesomeClassname: 'fas fa-database',
-    },
-    {
-      skillName: 'aws',
-      fontAwesomeClassname: 'fab fa-aws',
-    },
-    {
-      skillName: 'firebase',
-      fontAwesomeClassname: 'fas fa-fire',
-    },
-    {
-      skillName: 'python',
-      fontAwesomeClassname: 'fab fa-python',
-    },
-    {
-      skillName: 'docker',
-      fontAwesomeClassname: 'fab fa-docker',
-    },
+    { skillName: 'HTML5', icon: faHtml5 },
+    { skillName: 'CSS3', icon: faCss3Alt },
+    { skillName: 'Sass', icon: faSass },
+    { skillName: 'JavaScript', icon: faJs },
+    { skillName: 'React', icon: faReact },
+    { skillName: 'Node.js', icon: faNode },
+    { skillName: 'Swift', icon: faSwift },
+    { skillName: 'npm', icon: faNpm },
+    { skillName: 'SQL', icon: faDatabase },
+    { skillName: 'AWS', icon: faAws },
+    { skillName: 'Firebase', icon: faFire },
+    { skillName: 'Python', icon: faPython },
+    { skillName: 'Docker', icon: faDocker },
   ],
   display: true, // Set false to hide this section, defaults to true
 }

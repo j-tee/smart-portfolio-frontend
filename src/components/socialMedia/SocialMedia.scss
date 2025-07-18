@@ -1,90 +1,52 @@
 @use '@/styles/globalColor' as *;
 
 .social-media-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
   font-size: 2em;
-}
+  margin-top: 1rem;
 
-.icon-button {
-  margin-bottom: 10px;
-}
-
-.icon-button i {
-  color: $textColorDark;
-  border-radius: 2.6rem;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1.3rem;
-  height: 2.6rem;
-  line-height: 2.6rem;
-  margin: 0 5px;
-  position: relative;
-  text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 2.6rem;
-  margin-bottom: 10px;
-  transition: 0.2s ease-in;
-}
-
-.facebook i {
-  background-color: $faceBook;
-}
-
-.linkedin i {
-  background-color: $linkedin;
-}
-
-.github i {
-  background-color: $github;
-}
-
-.gitlab i {
-  background-color: $gitlab;
-}
-
-.google i {
-  background-color: $google;
-}
-
-.twitter i {
-  background-color: $twitter;
-}
-
-.medium i {
-  background-color: $medium;
-}
-
-.stack-overflow i {
-  background-color: $stackoverflow;
-}
-
-.kaggle i {
-  background-color: $kaggle;
-}
-
-.instagram i {
-  background-color: $instagram;
-}
-
-/* Hover Transition */
-.twitter i:hover,
-.google i:hover,
-.gitlab i:hover,
-.github i:hover,
-.linkedin i:hover,
-.facebook i:hover,
-.instagram i:hover,
-.stack-overflow i:hover,
-.kaggle i:hover,
-.medium i:hover {
-  background-color: $textColor;
-}
-
-/* Media Query */
-@media (max-width: 768px) {
-  .social-media-div {
+  @media (max-width: 768px) {
     text-align: center;
   }
 }
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 2.6rem;
+  background-color: $textColorDark;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in;
+  margin: 0 5px 10px;
+
+  svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    color: white;
+  }
+
+  &:hover {
+    background-color: $textColor;
+    transform: scale(1.1);
+  }
+}
+
+/* Brand-specific background overrides */
+.facebook     { background-color: $faceBook; }
+.linkedin     { background-color: $linkedin; }
+.github       { background-color: $github; }
+.gitlab       { background-color: $gitlab; }
+.google       { background-color: $google; }
+.twitter      { background-color: $twitter; }
+.medium       { background-color: $medium; }
+.stack-overflow { background-color: $stackoverflow; }
+.kaggle       { background-color: $kaggle; }
+.instagram    { background-color: $instagram; }
