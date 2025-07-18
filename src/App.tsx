@@ -21,6 +21,8 @@ import Footer from '@/components/footer/Footer'
 import useLocalStorage from '@/hooks/useLocalStorage'
 import ScrollToTopButton from '@/containers/topbutton/Top'
 import '@/App.scss'
+import { Route, Routes } from 'react-router-dom'
+import Admin from './containers/admin/Admin'
 
 const App = () => {
   const darkPref = window.matchMedia('(prefers-color-scheme: dark)')
@@ -44,11 +46,15 @@ const App = () => {
   const changeTheme = () => {
     setIsDark(!isDark)
   }
-
+const isAdminRoute = location.pathname.toLowerCase() === '/admin'
   return (
     <div className={isDark ? 'dark-mode' : undefined}>
       <StyleProvider value={{ isDark, changeTheme }}>
-        {isShowingSplashAnimation && splashScreen.enabled ? (
+        {isAdminRoute ? (
+          <Routes>
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        ) : isShowingSplashAnimation && splashScreen.enabled ? (
           <SplashScreen />
         ) : (
           <>

@@ -15,6 +15,7 @@ import {
   resumeSection,
 } from '@/portfolio'
 
+
 const Header = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType
   const viewExperience = workExperiences.display

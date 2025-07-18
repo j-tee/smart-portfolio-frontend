@@ -1,0 +1,25 @@
+@use '@styles/globalColor' as *;
+
+.admin-container {
+  background-color: globalColor.$primary-color;
+  padding: 20px;
+  border-radius: 5px;
+
+  h1 {
+    color: globalColor.$text-color;
+  }
+}
+.admin-heading {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0px;
+}
+.admin-subtitle {
+  text-transform: uppercase;
+  margin: 0px;
+  margin-bottom: 40px;
+}
+.subTitle {
+  color: globalColor.$subTitle;
+}
