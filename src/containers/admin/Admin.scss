@@ -1,13 +1,13 @@
-@use '@styles/globalColor' as *;
+@use '@/styles/globalColor' as *;
 
 .admin-container {
-  background-color: globalColor.$primary-color;
+  background-color: $darkBackground;;
   padding: 20px;
   border-radius: 5px;
 
-  h1 {
-    color: globalColor.$text-color;
-  }
+//   h1 {
+//     color: $text-color;
+//   }
 }
 .admin-heading {
   font-size: 48px;
@@ -20,6 +20,7 @@
   margin: 0px;
   margin-bottom: 40px;
 }
-.subTitle {
-  color: globalColor.$subTitle;
-}
+
+// .subTitle {
+//   color: globalColor.$subTitle;
+// }

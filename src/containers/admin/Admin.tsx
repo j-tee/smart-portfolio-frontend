@@ -1,11 +1,7 @@
-import React from 'react'
+import './Admin.scss'
 
 const Admin = () => {
-  return (
-    <div className="admin-container">
-      <h1>Admin Dashboard</h1>
-    </div>
-  )
+  return <h1>Admin Dashboard</h1>
 }
 
 export default Admin

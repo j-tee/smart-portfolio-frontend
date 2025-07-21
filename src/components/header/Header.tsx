@@ -15,7 +15,6 @@ import {
   resumeSection,
 } from '@/portfolio'
 
-
 const Header = () => {
   const { isDark } = useContext(StyleContext) as StyleContextType
   const viewExperience = workExperiences.display
@@ -39,7 +38,6 @@ const Header = () => {
           <span className="sr-only">Toggle menu</span> {/* Hidden for sighted users */}
           <span className={isDark ? 'navicon navicon-dark' : 'navicon'} />
         </label>
-
         <ul className={isDark ? 'dark-menu menu' : 'menu'}>
           {viewSkills && (
             <li>

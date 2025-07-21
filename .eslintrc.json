@@ -72,6 +72,13 @@
   //   "react/button-has-type": "off"
   // },
   "rules": {
+     "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"] // allow Redux Toolkit's state mutation
+      }
+    ],
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "react/function-component-definition": [

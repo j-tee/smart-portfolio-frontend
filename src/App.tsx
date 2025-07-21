@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { splashScreen } from '@/portfolio'
-
 import { StyleProvider } from '@/contexts/StyleContext'
 import SplashScreen from '@/containers/splashScreen/SplashScreen'
 import Header from '@/components/header/Header'
@@ -21,8 +20,6 @@ import Footer from '@/components/footer/Footer'
 import useLocalStorage from '@/hooks/useLocalStorage'
 import ScrollToTopButton from '@/containers/topbutton/Top'
 import '@/App.scss'
-import { Route, Routes } from 'react-router-dom'
-import Admin from './containers/admin/Admin'
 
 const App = () => {
   const darkPref = window.matchMedia('(prefers-color-scheme: dark)')
@@ -46,15 +43,10 @@ const App = () => {
   const changeTheme = () => {
     setIsDark(!isDark)
   }
-const isAdminRoute = location.pathname.toLowerCase() === '/admin'
   return (
     <div className={isDark ? 'dark-mode' : undefined}>
       <StyleProvider value={{ isDark, changeTheme }}>
-        {isAdminRoute ? (
-          <Routes>
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        ) : isShowingSplashAnimation && splashScreen.enabled ? (
+        {isShowingSplashAnimation && splashScreen.enabled ? (
           <SplashScreen />
         ) : (
           <>

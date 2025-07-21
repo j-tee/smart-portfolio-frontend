@@ -2,11 +2,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import aboutReducer from '@/features/aboutMe/aboutMeSlice'
 import projectReducer from '@/features/projects/projectSlice'
+import greetingReducer from '@/containers/greeting/greetingSlice'
 
 export const store = configureStore({
   reducer: {
     about: aboutReducer,
     projects: projectReducer,
+    greetings: greetingReducer,
   },
 })
 
