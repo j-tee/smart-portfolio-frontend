@@ -38,6 +38,28 @@
   display: flex;
   margin-top: 40px;
 }
+
+.crud-icon-buttons button {
+  // justify-content: flex-end;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+  border: 2px solid $textColor;
+  color: $textColor;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.crud-icon-buttons button:hover {
+  background-color: $accentColor;
+  color: white;
+  border-color: $accentColor;
+}
 .download-link-button {
   text-decoration: none;
 }

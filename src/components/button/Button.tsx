@@ -13,6 +13,7 @@ interface ButtonProps {
   /* eslint-disable react/no-unused-prop-types */
   className?: string
   newTab?: boolean
+  onClick?: () => void
   // newTab?: boolean
   // onClick?: () => void
   // id?: string
