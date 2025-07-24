@@ -50,7 +50,7 @@ interface ButtonProps {
   // 'aria-valuemin'?: number
 }
 
-const Button = ({ text, href, download }: ButtonProps) => (
+const CustomButton = ({ text, href, download }: ButtonProps) => (
   <a
     className="main-button"
     href={href}
@@ -61,4 +61,4 @@ const Button = ({ text, href, download }: ButtonProps) => (
     {text}
   </a>
 )
-export default Button
+export default CustomButton

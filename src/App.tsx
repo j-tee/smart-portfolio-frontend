@@ -3,7 +3,7 @@ import { splashScreen } from '@/portfolio'
 import { StyleProvider } from '@/contexts/StyleContext'
 import SplashScreen from '@/containers/splashScreen/SplashScreen'
 import Header from '@/components/header/Header'
-import Greeting from '@/containers/greeting/Greeting'
+// import Greeting from '@/containers/greeting/Greeting'
 import Skills from '@/containers/skills/Skills'
 import StackProgress from '@/containers/skillProgress/skillProgress'
 import Education from '@/containers/education/Education'
@@ -20,6 +20,7 @@ import Footer from '@/components/footer/Footer'
 import useLocalStorage from '@/hooks/useLocalStorage'
 import ScrollToTopButton from '@/containers/topbutton/Top'
 import '@/App.scss'
+import Greeting from './containers/greeting/Greeting'
 
 const App = () => {
   const darkPref = window.matchMedia('(prefers-color-scheme: dark)')

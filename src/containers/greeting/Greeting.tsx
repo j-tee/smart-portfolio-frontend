@@ -5,59 +5,100 @@ import './Greeting.scss'
 import landingPerson from '@/assets/lottie/landingPerson.json'
 import DisplayLottie from '@/components/displayLottie/DisplayLottie'
 import SocialMedia from '@/components/socialMedia/SocialMedia'
-import Button from '@/components/button/Button'
-import { illustration, greeting } from '@/portfolio'
+import CustomButton from '@/components/button/Button'
+import { illustration } from '@/portfolio'
 import StyleContext from '@/contexts/StyleContext'
 import type { StyleContextType } from '@/contexts/StyleContext'
 import manOnTable from '@/assets/images/manOnTable.svg'
-import resumePDF from './resume.pdf'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faPen, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import PopupModal from '@/components/greeting/PopupModal'
+import { Button } from 'react-bootstrap'
+import resumePDF from './resume.pdf'
+import useAppDispatch from '@/app/hooks/useAppDispatch'
+
+import type { Greetings } from '@/types/portfolio'
+import { addGreeting } from './greetingSlice'
+import { useSelector } from 'react-redux'
+import type { RootState } from '@/app/store'
 
 const Greeting = () => {
+  const { greet } = useSelector((state: RootState) => state.greetings)
   const { isDark } = useContext(StyleContext) as StyleContextType
-   const [modalType, setModalType] = useState<null | 'Create' | 'Read' | 'Update' | 'Delete'>(null)
-   
-  if (!greeting.displayGreeting) {
-    return null
-  }
+  const [modalType, setModalType] = useState<null | 'Create' | 'Read' | 'Update' | 'Delete'>(null)
+  const [greeting, setGreeting] = useState<Greetings>({
+    username: '',
+    title: '',
+    subtitle: '',
+    resume_link: '',
+    display: true,
+  })
 
   const closeModal = () => setModalType(null)
+  const dispatch = useAppDispatch()
 
+  const handleSubmit = () => {
+    // Dispatch create action
+    const data: Greetings = {
+      username: greeting.username,
+      title: greeting.title,
+      subtitle: String(greeting.subtitle),
+      resume_link: greeting.resume_link,
+      display: greeting.display,
+    }
+    if (modalType === 'Create') {
+      dispatch(addGreeting(data)).then(response => {
+        // eslint-disable-next-line no-console
+        console.log('Greeting created:', response)
+        closeModal()
+      })
+    } else if (modalType === 'Update') {
+      dispatch(addGreeting(data)).then(response => {
+        // eslint-disable-next-line no-console
+        console.log('Greeting updated:', response)
+        closeModal()
+      })
+    } else if (modalType === 'Delete') {
+      dispatch(addGreeting(data)).then(() => {
+        // eslint-disable-next-line no-console
+        console.log('Greeting deleted')
+        closeModal()
+      })
+    }
+  }
   return (
     <Fade direction="up" duration={1000}>
       <div className="greet-main" id="greeting">
         <div className="greeting-main">
           <div className="greeting-text-div">
             <div className="button-greeting-div crud-icon-buttons">
-                <button title="Create" onClick={() => setModalType('Create')} className="icon-button">
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
-            <button title="Read" onClick={() => setModalType('Read')} className="icon-button">
-              <FontAwesomeIcon icon={faEye} />
-            </button>
-            <button title="Update" onClick={() => setModalType('Update')} className="icon-button">
-              <FontAwesomeIcon icon={faPen} />
-            </button>
-            <button title="Delete" onClick={() => setModalType('Delete')} className="icon-button">
-              <FontAwesomeIcon icon={faTrash} />
-            </button>
-              </div>
+              <button title="Create" onClick={() => setModalType('Create')} className="icon-button">
+                <FontAwesomeIcon icon={faPlus} />
+              </button>
+              <button title="Read" onClick={() => setModalType('Read')} className="icon-button">
+                <FontAwesomeIcon icon={faEye} />
+              </button>
+              <button title="Update" onClick={() => setModalType('Update')} className="icon-button">
+                <FontAwesomeIcon icon={faPen} />
+              </button>
+              <button title="Delete" onClick={() => setModalType('Delete')} className="icon-button">
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+            </div>
             <div>
               <h1 className={isDark ? 'dark-mode greeting-text' : 'greeting-text'}>
                 {' '}
                 {greeting.title} <span className="wave-emoji">{emoji('👋')}</span>
               </h1>
               <p className={isDark ? 'dark-mode greeting-text-p' : 'greeting-text-p subTitle'}>
-                {greeting.subTitle}
+                {greeting.subtitle}
               </p>
               <div id="resume" className="empty-div" />
               <SocialMedia />
               <div className="button-greeting-div">
-                <Button text="Contact me" href="#contact" />
-                {greeting.resumeLink && (
-                  <Button text="Download my resume" href={resumePDF} download="Resume.pdf" />
+                <CustomButton text="Contact me" href="#contact" />
+                {greeting.resume_link && (
+                  <CustomButton text="Download my resume" href={resumePDF} download="Resume.pdf" />
                 )}
               </div>
             </div>
@@ -73,25 +114,63 @@ const Greeting = () => {
       </div>
       <PopupModal title={`${modalType} Greeting`} isOpen={!!modalType} onClose={closeModal}>
         {modalType === 'Read' ? (
-          <pre>{JSON.stringify(greeting, null, 2)}</pre>
+          <pre>{JSON.stringify(greet, null, 2)}</pre>
+        ) : modalType === 'Delete' ? (
+          <div>
+            <p>Are you sure you want to delete this greeting?</p>
+            <pre>{JSON.stringify(greet, null, 2)}</pre>
+            <Button variant="danger" onClick={handleSubmit}>
+              Confirm Delete
+            </Button>
+            <Button onClick={closeModal}>Cancel</Button>
+          </div>
         ) : (
           <form
-            onSubmit={(e) => {
+            onSubmit={e => {
               e.preventDefault()
               console.log(`${modalType} submitted`)
               closeModal()
             }}
           >
             <label>Greeting Title:</label>
-            <input type="text" defaultValue={greeting.title} />
+            <input
+              type="text"
+              onChange={e => setGreeting({ ...greeting, title: e.target.value })}
+              defaultValue={greet?.title || ''}
+            />
             <br />
+            <label>Username:</label>
+            <input
+              type="text"
+              onChange={e => setGreeting({ ...greeting, username: e.target.value })}
+              defaultValue={greet?.username || ''}
+            />
             <label>Subtitle:</label>
-            <input type="text" defaultValue={String(greeting.subTitle)} />
+            <input
+              type="text"
+              onChange={e => setGreeting({ ...greeting, subtitle: e.target.value })}
+              defaultValue={String(greet?.subtitle ?? '')}
+            />
+            <label>Resume Link:</label>
+            <input
+              type="text"
+              onChange={e => setGreeting({ ...greeting, resume_link: e.target.value })}
+              defaultValue={greet?.resume_link || ''}
+            />
+            <label>Display Greeting:</label>
+            <input
+              type="checkbox"
+              onChange={e => setGreeting({ ...greeting, display: e.target.checked })}
+              defaultChecked={greet?.display ?? false}
+            />
             <br />
-            <button type="submit">{modalType}</button>
+            <Button type="submit" onClick={handleSubmit}>
+              {modalType}
+            </Button>
           </form>
         )}
       </PopupModal>
+
     </Fade>
   )
 }

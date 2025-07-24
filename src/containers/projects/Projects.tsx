@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, Suspense, lazy } from 'react'
 import './Project.scss'
-import Button from '@/components/button/Button'
+import CustomButton from '@/components/button/Button'
 import { openSource, socialMediaLinks } from '@/portfolio'
 import StyleContext from '@/contexts/StyleContext'
 import type { StyleContextType } from '@/contexts/StyleContext'
@@ -77,7 +77,7 @@ const Projects = () => {
               return <GithubRepoCard repo={v} key={v.node.id} isDark={isDark} />
             })}
           </div>
-          <Button
+          <CustomButton
             text="More Projects"
             className="project-button"
             href={socialMediaLinks.github}

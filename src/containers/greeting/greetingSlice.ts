@@ -1,18 +1,23 @@
-import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { createGreeting, editGreeting, getGreeting, removeGreeting } from './greetingService'
+import type { Greetings } from '@/types/portfolio'
+// import Greeting from './Greeting'
 
 interface GreetingState {
+  greetings: Greetings[]
+  greet:Greetings | null
   message: string | null
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
 }
 
-
-interface GreetingResponse {
-  greeting: string
-}
+// interface GreetingResponse {
+//   greeting: string
+// }
 
 const initialState: GreetingState = {
+  greet: null,
+  greetings: [],
   message: null,
   status: 'idle',
   error: null,
@@ -23,14 +28,14 @@ export const fetchGreeting = createAsyncThunk('greeting/fetch', async () => {
   return response
 })
 
-export const addGreeting = createAsyncThunk('greeting/add', async (data: { message: string }) => {
+export const addGreeting = createAsyncThunk('greeting/add', async (data: Greetings) => {
   const response = await createGreeting(data)
   return response
 })
 
 export const updateGreeting = createAsyncThunk(
   'greeting/update',
-  async (data: { message: string }) => {
+  async (data: Greetings) => {
     const response = await editGreeting(data)
     return response
   }
@@ -51,7 +56,7 @@ const greetingSlice = createSlice({
       })
       .addCase(fetchGreeting.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.message = action.payload
+        state.greet = action.payload
       })
       .addCase(fetchGreeting.rejected, (state, action) => {
         state.status = 'failed'

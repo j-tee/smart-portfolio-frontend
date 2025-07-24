@@ -1,5 +1,6 @@
 import React from 'react'
 import './PopupModal.scss'
+import { Modal } from 'react-bootstrap'
 
 interface PopupModalProps {
   title: string
@@ -10,17 +11,19 @@ interface PopupModalProps {
 
 const PopupModal: React.FC<PopupModalProps> = ({ title, isOpen, onClose, children }) => {
   if (!isOpen) return null
-
+  
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
-        <h2>{title}</h2>
-        <div>{children}</div>
+    <Modal show={isOpen} animation centered onHide={onClose} size="lg">
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{children}</Modal.Body>
+      <Modal.Footer>
         <button className="close-button" onClick={onClose}>
           Close
         </button>
-      </div>
-    </div>
+      </Modal.Footer>
+    </Modal>
   )
 }
 

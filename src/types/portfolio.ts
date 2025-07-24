@@ -22,3 +22,12 @@ export interface AboutMe {
   profile_picture: string
   skills?: Skill[]
 }
+
+export interface Greetings {
+  id?: number
+  username: string
+  title: string
+  subtitle: string
+  resume_link: string
+  display: boolean
+}
