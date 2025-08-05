@@ -80,7 +80,11 @@ const Greeting = () => {
     }
     if (modalType === 'Create') {
       dispatch(addGreeting(data)).then(() => {
-        toast.success('Greeting created successfully!')
+        if(status === 'fulfilled') {
+          toast.success('Greeting created successfully!')
+        } else {
+          toast.error('Failed to create greeting')
+        }
         closeModal()
       })
     } else if (modalType === 'Update') {
