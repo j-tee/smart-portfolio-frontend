@@ -1,15 +1,16 @@
 import React from 'react'
 import './PopupModal.scss'
-import { Modal } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 
 interface PopupModalProps {
   title: string
   isOpen: boolean
+  submit?: () => void
   onClose: () => void
   children: React.ReactNode
 }
 
-const PopupModal: React.FC<PopupModalProps> = ({ title, isOpen, onClose, children }) => {
+const PopupModal: React.FC<PopupModalProps> = ({ title, isOpen, onClose, children, submit }) => {
   if (!isOpen) return null
   
   return (
@@ -19,9 +20,15 @@ const PopupModal: React.FC<PopupModalProps> = ({ title, isOpen, onClose, childre
       </Modal.Header>
       <Modal.Body>{children}</Modal.Body>
       <Modal.Footer>
-        <button className="close-button" onClick={onClose}>
+        {/* {submit && (
+          
+        )} */}
+        <Button className="submit-button" onClick={submit}>
+            Submit
+          </Button>
+        <Button  onClick={onClose}>
           Close
-        </button>
+        </Button>
       </Modal.Footer>
     </Modal>
   )

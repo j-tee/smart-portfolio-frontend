@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Fade } from 'react-awesome-reveal'
 import emoji from 'react-easy-emoji'
 import './Greeting.scss'
@@ -13,19 +13,20 @@ import manOnTable from '@/assets/images/manOnTable.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faPen, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import PopupModal from '@/components/greeting/PopupModal'
-import { Button } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import resumePDF from './resume.pdf'
 import useAppDispatch from '@/app/hooks/useAppDispatch'
-
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 import type { Greetings } from '@/types/portfolio'
-import { addGreeting } from './greetingSlice'
+import { addGreeting, deleteGreeting, fetchGreeting, updateGreeting } from './greetingSlice'
 import { useSelector } from 'react-redux'
 import type { RootState } from '@/app/store'
 
 const Greeting = () => {
-  const { greet } = useSelector((state: RootState) => state.greetings)
+  const { greet,greetings, status } = useSelector((state: RootState) => state.greetings)
   const { isDark } = useContext(StyleContext) as StyleContextType
   const [modalType, setModalType] = useState<null | 'Create' | 'Read' | 'Update' | 'Delete'>(null)
+  const dispatch = useAppDispatch()
   const [greeting, setGreeting] = useState<Greetings>({
     username: '',
     title: '',
@@ -33,13 +34,44 @@ const Greeting = () => {
     resume_link: '',
     display: true,
   })
+  
+  useEffect(() => {
+    dispatch(fetchGreeting()).then(response => {
+      const data = (response as { payload?: Greetings })?.payload
+      if (data) {
+        const greetingData = Array.isArray(data) ? data[0] : data
+        setGreeting((prev) => {
+          const isDifferent = JSON.stringify(prev) !== JSON.stringify(greetingData)
+          return isDifferent ? { ...prev, ...greetingData } : prev
+        })
+      }
+    })
+  }, [dispatch])
 
+  // useEffect(() => {
+  //   if (greeting) {
+  //     console.log('Greeting status:', greeting)
+  //   }
+  // }, [greeting])
+
+  useEffect(() => {
+    console.log('Greeting status:', greetings)
+    if (status === 'fulfilled') {
+      toast.success('Greeting fetched successfully!')
+    }
+    if (status === 'rejected') {
+      toast.error('Failed to fetch greeting')
+    }
+    if (status === 'pending') {
+      // toast.info('Fetching greeting...')
+    }
+  }, [status])
   const closeModal = () => setModalType(null)
-  const dispatch = useAppDispatch()
 
   const handleSubmit = () => {
     // Dispatch create action
     const data: Greetings = {
+      id: greet?.id || 0,
       username: greeting.username,
       title: greeting.title,
       subtitle: String(greeting.subtitle),
@@ -50,22 +82,35 @@ const Greeting = () => {
       dispatch(addGreeting(data)).then(response => {
         // eslint-disable-next-line no-console
         console.log('Greeting created:', response)
+        alert('Greeting created successfully!')
         closeModal()
       })
     } else if (modalType === 'Update') {
-      dispatch(addGreeting(data)).then(response => {
-        // eslint-disable-next-line no-console
-        console.log('Greeting updated:', response)
+      dispatch(updateGreeting(data)).then(() => {
         closeModal()
+        if (status === 'fulfilled') {
+          toast.success('Greeting updated successfully!')
+        } else {
+          toast.error('Failed to update greeting')
+        }
       })
     } else if (modalType === 'Delete') {
-      dispatch(addGreeting(data)).then(() => {
-        // eslint-disable-next-line no-console
-        console.log('Greeting deleted')
+      if (typeof data.id === 'number') {
+        dispatch(deleteGreeting(data.id)).then(() => {
+          if (status === 'fulfilled') {
+            toast.success('Greeting deleted successfully!')
+          } else {
+            toast.error('Failed to delete greeting')
+          }
+          closeModal()
+        })
+      } else {
+        alert('Cannot delete: Greeting ID is missing.')
         closeModal()
-      })
+      }
     }
   }
+ 
   return (
     <Fade direction="up" duration={1000}>
       <div className="greet-main" id="greeting">
@@ -88,7 +133,9 @@ const Greeting = () => {
             <div>
               <h1 className={isDark ? 'dark-mode greeting-text' : 'greeting-text'}>
                 {' '}
-                {greeting.title} <span className="wave-emoji">{emoji('👋')}</span>
+                Hi <span className="wave-emoji">{emoji('👋')}</span>,
+                I am {greeting.username || 'User'}! <br />
+                {greeting.title}
               </h1>
               <p className={isDark ? 'dark-mode greeting-text-p' : 'greeting-text-p subTitle'}>
                 {greeting.subtitle}
@@ -112,7 +159,7 @@ const Greeting = () => {
           </div>
         </div>
       </div>
-      <PopupModal title={`${modalType} Greeting`} isOpen={!!modalType} onClose={closeModal}>
+      <PopupModal title={`${modalType} Greeting`} isOpen={!!modalType} submit={handleSubmit} onClose={closeModal}>
         {modalType === 'Read' ? (
           <pre>{JSON.stringify(greet, null, 2)}</pre>
         ) : modalType === 'Delete' ? (
@@ -125,52 +172,76 @@ const Greeting = () => {
             <Button onClick={closeModal}>Cancel</Button>
           </div>
         ) : (
-          <form
+          <Form
             onSubmit={e => {
               e.preventDefault()
               console.log(`${modalType} submitted`)
               closeModal()
             }}
           >
-            <label>Greeting Title:</label>
-            <input
-              type="text"
-              onChange={e => setGreeting({ ...greeting, title: e.target.value })}
-              defaultValue={greet?.title || ''}
-            />
-            <br />
-            <label>Username:</label>
-            <input
-              type="text"
-              onChange={e => setGreeting({ ...greeting, username: e.target.value })}
-              defaultValue={greet?.username || ''}
-            />
-            <label>Subtitle:</label>
-            <input
-              type="text"
-              onChange={e => setGreeting({ ...greeting, subtitle: e.target.value })}
-              defaultValue={String(greet?.subtitle ?? '')}
-            />
-            <label>Resume Link:</label>
-            <input
-              type="text"
-              onChange={e => setGreeting({ ...greeting, resume_link: e.target.value })}
-              defaultValue={greet?.resume_link || ''}
-            />
-            <label>Display Greeting:</label>
-            <input
-              type="checkbox"
-              onChange={e => setGreeting({ ...greeting, display: e.target.checked })}
-              defaultChecked={greet?.display ?? false}
-            />
-            <br />
-            <Button type="submit" onClick={handleSubmit}>
-              {modalType}
-            </Button>
-          </form>
+            <Row>
+              <Col>
+                <Form.Group controlId="formGreetingTitle">
+                  {/* <Form.Label>Greeting Title:</Form.Label> */}
+                  <Form.Control
+                    type="text"
+                    placeholder='Full Name'
+                    onChange={e => setGreeting({ ...greeting, title: e.target.value })}
+                    defaultValue={greet?.title || ''}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="formGreetingSubtitle">
+                  {/* <Form.Label>Greeting Subtitle:</Form.Label> */}
+                  <Form.Control
+                    type="text"
+                    placeholder='Job Title or Tagline'
+                    onChange={e => setGreeting({ ...greeting, subtitle: e.target.value })}
+                    defaultValue={String(greet?.subtitle ?? '')}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group controlId="formGreetingUsername">
+                  {/* <Form.Label>Username:</Form.Label> */}
+                  <Form.Control
+                    type="text"
+                    placeholder='Username'
+                    onChange={e => setGreeting({ ...greeting, username: e.target.value })}
+                    defaultValue={greet?.username || ''}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="formGreetingResumeLink">
+                  {/* <Form.Label>Resume Link:</Form.Label> */}
+                  <Form.Control
+                    type="text"
+                    placeholder='Resume Link'
+                    onChange={e => setGreeting({ ...greeting, resume_link: e.target.value })}
+                    defaultValue={greet?.resume_link || ''}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group controlId="formGreetingDisplay">
+                  <Form.Check
+                    type="switch"
+                    label="Display Greeting"
+                    onChange={e => setGreeting({ ...greeting, display: e.target.checked })}
+                    defaultChecked={greet?.display ?? false}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+          </Form>
         )}
       </PopupModal>
-
     </Fade>
   )
 }

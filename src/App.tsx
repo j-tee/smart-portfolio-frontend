@@ -21,6 +21,8 @@ import useLocalStorage from '@/hooks/useLocalStorage'
 import ScrollToTopButton from '@/containers/topbutton/Top'
 import '@/App.scss'
 import Greeting from './containers/greeting/Greeting'
+import { ToastContainer, Bounce } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
   const darkPref = window.matchMedia('(prefers-color-scheme: dark)')
@@ -46,6 +48,19 @@ const App = () => {
   }
   return (
     <div className={isDark ? 'dark-mode' : undefined}>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
       <StyleProvider value={{ isDark, changeTheme }}>
         {isShowingSplashAnimation && splashScreen.enabled ? (
           <SplashScreen />
