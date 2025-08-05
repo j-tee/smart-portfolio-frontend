@@ -79,10 +79,8 @@ const Greeting = () => {
       display: greeting.display,
     }
     if (modalType === 'Create') {
-      dispatch(addGreeting(data)).then(response => {
-        // eslint-disable-next-line no-console
-        console.log('Greeting created:', response)
-        alert('Greeting created successfully!')
+      dispatch(addGreeting(data)).then(() => {
+        toast.success('Greeting created successfully!')
         closeModal()
       })
     } else if (modalType === 'Update') {
