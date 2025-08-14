@@ -16,14 +16,14 @@ import PopupModal from '@/components/greeting/PopupModal'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import resumePDF from './resume.pdf'
 import useAppDispatch from '@/app/hooks/useAppDispatch'
-import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import type { Greetings } from '@/types/portfolio'
 import { addGreeting, deleteGreeting, fetchGreeting, updateGreeting } from './greetingSlice'
 import { useSelector } from 'react-redux'
 import type { RootState } from '@/app/store'
 
 const Greeting = () => {
-  const { greet,greetings, status } = useSelector((state: RootState) => state.greetings)
+  const { greet, status } = useSelector((state: RootState) => state.greetings)
   const { isDark } = useContext(StyleContext) as StyleContextType
   const [modalType, setModalType] = useState<null | 'Create' | 'Read' | 'Update' | 'Delete'>(null)
   const dispatch = useAppDispatch()
@@ -55,7 +55,6 @@ const Greeting = () => {
   // }, [greeting])
 
   useEffect(() => {
-    console.log('Greeting status:', greetings)
     if (status === 'fulfilled') {
       toast.success('Greeting fetched successfully!')
     }
@@ -63,7 +62,7 @@ const Greeting = () => {
       toast.error('Failed to fetch greeting')
     }
     if (status === 'pending') {
-      // toast.info('Fetching greeting...')
+      // toast.loading('Fetching greeting...', { autoClose: 100, pauseOnHover: true })
     }
   }, [status])
   const closeModal = () => setModalType(null)

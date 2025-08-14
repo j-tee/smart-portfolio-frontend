@@ -9,6 +9,15 @@ const __dirname = dirname(__filename)
 
 // https://vite.dev/config/
 export default defineConfig({
+  optimizeDeps: {
+    include: ['problematic-package-name'] // Add the package causing issues
+  },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true, // Enable mixed ES/CJS transformation
+      include: [/node_modules/] // Process these files
+    }
+  },
   plugins: [react()],
   resolve: {
     alias: {
